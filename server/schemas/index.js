@@ -1,6 +1,4 @@
-import { User } from './User.js'
-import { Project } from './Project.js'
-import { Task } from './Task.js'
-import { Card } from './Card.js'
+import typeDefs from './typeDefs.js';
+import resolvers from './resolvers.js';
 
-export { User, Project, Task, Card };
+export { typeDefs, resolvers };
