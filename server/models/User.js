@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const { Schema, model } = mongoose;
-const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 const userSchema = new Schema ({
     username: {
@@ -8,7 +8,7 @@ const userSchema = new Schema ({
         required: true,
         unique: true,
         validate: {
-            validator: function(value) {
+           validator: function(value) {
                 return /^[a-zA-Z0-9]+$/.test(value);
             },
             message: "Invalid Username Format"
@@ -19,7 +19,7 @@ const userSchema = new Schema ({
         required: true,
         validate: {
             validator: function(value) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+                return /^[a-zA-Z\s-]+$/.test(value);
             },
             message: 'Name must contain only letters and hyphens'
         },
@@ -30,7 +30,7 @@ const userSchema = new Schema ({
         unique: true,
           validate: {
             validator: function(value) {
-                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
             },
             message: 'Invalid Email Format'
         }
@@ -39,6 +39,7 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         minlength: 8,
+        select: false
     },
     photoUrl: {
         type: String,
@@ -67,7 +68,7 @@ const userSchema = new Schema ({
 });
 
 userSchema.pre('save', async function(next) {
-    if (this.isNew || this.isModified('password')) {
+    if (this.isModified('password')) {
       const saltRounds = 10;
       this.password = await bcrypt.hash(this.password, saltRounds);
     }
@@ -81,4 +82,4 @@ userSchema.methods.isCorrectPassword = async function(password) {
 
 const User = model('User', userSchema);
   
-module.exports = User;
+export default User;

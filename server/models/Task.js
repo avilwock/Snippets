@@ -14,12 +14,12 @@ const taskSchema = new Schema ({
     due_date: {
         type: Date,
     },
-    user_id: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    project_id: {
+    project: {
         type: Schema.Types.ObjectId,
         ref: 'Project',
     }
@@ -27,6 +27,9 @@ const taskSchema = new Schema ({
     timestamps: true
 });
 
+taskSchema.index({project: 1 });
+taskSchema.index({ user: 1 })
+
 const Task = model ('Task', taskSchema);
 
-module.exports = Task;
+export default Task

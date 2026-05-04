@@ -5,7 +5,6 @@ const projectSchema = new Schema ({
     project_name: {
         type: String,
         required: true,
-        description: "Project name",
         trim: true
     },
     description: {
@@ -13,36 +12,43 @@ const projectSchema = new Schema ({
     },
     share_id: {
         type: String,
-        unique: true
+        unique: true,
+        sparse: true
     },
     color: {
         type: String,
         match: /^#([0-9A-Fa-f]{3}){1,2}$/
     },
-    owner_id: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
     },
-    members: [
-    {
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        role: {
-            type: String,
-            enum: ['owner', 'editor', 'viewer'],
-            default: 'viewer'
-        }
-    }
-]
+    members: {
+        type: [
+            {
+                user: {
+                    type: Schema.Types.ObjectId,
+                    ref: 'User',
+                    required: true
+                },
+                role: {
+                    type: String,
+                    enum: ['owner', 'editor', 'viewer'],
+                    default: 'viewer'
+                }
+            }
+        ],
+        default: []
+    },
 },
 {
     timestamps: true
 });
 
+projectSchema.index({ owner: 1 });
+projectSchema.index({ share_id: 1 });
+
 const Project = model ('Project', projectSchema);
 
-module.exports = Project;
+export default Project;

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+import mongoose from 'mongoose'
 const { Schema, model } = mongoose;
 
 const cardSchema = new Schema({
@@ -11,11 +11,11 @@ const cardSchema = new Schema({
         enum: ['snippet', 'idea', 'scene', 'character', 'worldbuilding'],
         required: true
     },
-    project_id: {
+    project: {
         type: Schema.Types.ObjectId,
         ref: 'Project'
     },
-    owner_id: {
+    owner: {
         type: Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -25,6 +25,9 @@ const cardSchema = new Schema({
     timestamps: true
 });
 
+cardSchema.index({ project: 1 });
+cardSchema.index({ owner: 1 });
+
 const Card = model ('Card', cardSchema);
 
-module.exports = Card
+export default Card
