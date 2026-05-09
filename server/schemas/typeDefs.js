@@ -17,11 +17,6 @@ const typeDefs =`
         card(id: ID!): Card
         task(id:ID!): Task
     }
-
-    type ProjectMember {
-        user: User!
-        role: String!
-    }
     
     type User {
         _id: ID!
@@ -35,9 +30,6 @@ const typeDefs =`
         lastLoginAt: Date
         createdAt: Date
         updatedAt: Date
-        projects: [Project]
-        tasks: [Task]
-        cards: [Card]
     }
 
     type Project {
@@ -46,8 +38,23 @@ const typeDefs =`
         description: String
         share_id: String
         color: String
-        owner: User!
-        members: [ProjectMember!]
+        user: User!
+        tasks: [Task]
+        cards: [Card]
+        createdAt: Date
+        updatedAt: Date
+    }
+
+    type ProjectBoard {
+        _id: ID!
+        project_name: String!
+        description: String
+        share_id: String
+        color: String
+        user: User!
+        
+        tasks: [Task]
+        cards: [Card]
         createdAt: Date
         updatedAt: Date
     }
@@ -57,7 +64,7 @@ const typeDefs =`
         content: String!
         category: String!
         project: Project
-        owner: User!
+        user: User!
         createdAt: Date
         updatedAt: Date
     }
@@ -86,9 +93,6 @@ const typeDefs =`
         password: String!
         photoUrl: String
         role: String
-        isVerified: Boolean
-        verificationToken: String
-        lastLoginAt: Date
     }
 
     input ProjectInput {
@@ -96,28 +100,27 @@ const typeDefs =`
         description: String
         share_id: String
         color: String
-        owner: ID!
-        members: [ID!]
+        user: ID!
     }
 
     input CardInput {
         content: String!
         category: String!
         project: ID
-        owner: ID!
+        user: ID!
     }
 
     input TaskInput {
         content: String!
         project: ID
-        owner: ID!
+        user: ID!
         status: TaskStatus
         due_date: Date
     }
 
 type Mutation {
     login(email: String!, password: String!): Auth
-    addUser(userInput: UserInput!): User
+    addUser(userInput: UserInput!): Auth
     editUser(id: ID!, userInput: UserInput!): User
 
     addProject(projectInput: ProjectInput!): Project
