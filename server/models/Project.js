@@ -5,7 +5,15 @@ const projectSchema = new Schema ({
     project_name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        validate: {
+            //a function that takes the value description field v
+            validator: function (v) {
+                //checks that v exists, the length is greater than 0 after the white space it trimmed
+                return v && v.trim().length > 0;
+            },
+            message: 'Title cannot be empty',
+        },
     },
     description: {
         type: String,

@@ -7,6 +7,9 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         unique: true,
+        trim: true,
+        minlength: 3,
+        maxlength: 20,
         validate: {
            validator: function(value) {
                 return /^[a-zA-Z0-9]+$/.test(value);
@@ -17,6 +20,7 @@ const userSchema = new Schema ({
     displayName: {
         type: String,
         required: true,
+        trim: true,
         validate: {
             validator: function(value) {
                 return /^[a-zA-Z\s-]+$/.test(value);
@@ -28,6 +32,8 @@ const userSchema = new Schema ({
         type: String,
         required: true,
         unique: true,
+        lowercase:true,
+        trim: true,
           validate: {
             validator: function(value) {
                 return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -43,7 +49,7 @@ const userSchema = new Schema ({
     },
     photoUrl: {
         type: String,
-        default: null
+        default: ""
     },
     role: {
         type: String,
@@ -68,11 +74,10 @@ const userSchema = new Schema ({
 });
 
 userSchema.pre('save', async function(next) {
-    if (this.isModified('password')) {
+    if (this.isNew || this.isModified('password')) {
       const saltRounds = 10;
       this.password = await bcrypt.hash(this.password, saltRounds);
     }
-    next();
 });
 
 // Compare the incoming password with the hashed password
@@ -80,6 +85,5 @@ userSchema.methods.isCorrectPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
 
-const User = model('User', userSchema);
-  
-export default User;
+export const User = model('User', userSchema);
+

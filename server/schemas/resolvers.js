@@ -166,7 +166,7 @@ const resolvers = {
                 throw new Error('Failed to Edit user')
             }
         },
-
+        
 
     }
 }
