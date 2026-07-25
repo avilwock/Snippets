@@ -1,9 +1,12 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 import db from './config/connection.js';
 import typeDefs from './schemas/typeDefs.js';
 import resolvers from './schemas/resolvers.js';
 import { authMiddleware } from './utils/auth.js';
+
 
 const PORT = process.env.PORT || 3001;
 

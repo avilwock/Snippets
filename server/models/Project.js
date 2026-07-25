@@ -27,36 +27,9 @@ const projectSchema = new Schema ({
         type: String,
         match: /^#([0-9A-Fa-f]{3}){1,2}$/
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-    },
-    members: {
-        type: [
-            {
-                user: {
-                    type: Schema.Types.ObjectId,
-                    ref: 'User',
-                    required: true
-                },
-                role: {
-                    type: String,
-                    enum: ['owner', 'editor', 'viewer'],
-                    default: 'viewer'
-                }
-            }
-        ],
-        default: []
-    },
 },
 {
     timestamps: true
 });
 
-projectSchema.index({ owner: 1 });
-projectSchema.index({ share_id: 1 });
-
-const Project = model ('Project', projectSchema);
-
-export default Project;
+export const Project = model('Project', projectSchema);

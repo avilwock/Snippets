@@ -14,6 +14,7 @@ const typeDefs =`
         cards: [Card]
         tasks: [Task]
         project(id: ID!): Project
+        projectBoard(projectId: ID!): Project
         card(id: ID!): Card
         task(id:ID!): Task
     }

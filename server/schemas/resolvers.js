@@ -1,7 +1,7 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-const { User, Project, Card, Task } = require('../models');
-const { signToken, AuthenticationError } = require('../utils/auth');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import { User, Project,Card, Task } from '../models/index.js'
+import { signToken, AuthenticationError} from '../utils/auth.js';
 
 const resolvers = {
     Query: {
@@ -171,4 +171,4 @@ const resolvers = {
     }
 }
 
-module.exports = resolvers;
+export default resolvers;

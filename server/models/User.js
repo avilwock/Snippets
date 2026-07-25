@@ -17,17 +17,6 @@ const userSchema = new Schema ({
             message: "Invalid Username Format"
         },
     },
-    displayName: {
-        type: String,
-        required: true,
-        trim: true,
-        validate: {
-            validator: function(value) {
-                return /^[a-zA-Z\s-]+$/.test(value);
-            },
-            message: 'Name must contain only letters and hyphens'
-        },
-    },
     email: {
         type: String,
         required: true,
@@ -46,27 +35,6 @@ const userSchema = new Schema ({
         required: true,
         minlength: 8,
         select: false
-    },
-    photoUrl: {
-        type: String,
-        default: ""
-    },
-    role: {
-        type: String,
-        enum: ['user', 'admin'],
-        default: 'user'
-    },
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
-    verificationToken: {
-        type: String,
-        default: null
-    },
-    lastLoginAt: {
-        type: Date,
-        default:null
     }
 },
 {

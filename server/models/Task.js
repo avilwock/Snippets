@@ -30,6 +30,4 @@ const taskSchema = new Schema ({
 taskSchema.index({project: 1 });
 taskSchema.index({ user: 1 })
 
-const Task = model ('Task', taskSchema);
-
-export default Task
+export const Task = model('Task', taskSchema);
