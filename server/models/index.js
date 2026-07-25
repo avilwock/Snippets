@@ -1,6 +1,6 @@
 import { User } from './User.js';
 import { Project } from './Project.js';
-import { Card } from './Card.js';
+import { Snips } from './Snips.js';
 import { Task } from './Task.js';
 
-export { User, Project, Card, Task };
+export { User, Project, Task, Snips };

@@ -6,10 +6,16 @@ const taskSchema = new Schema ({
         type: String,
         required: true
     },
-    status: {
-        type: String,
-        enum: ['todo', 'in_progress', 'done'],
-        default: 'todo'
+    tag: {
+  type: String,
+  enum: [
+    'Research',
+    'Drafting',
+    'Editing',
+    'Publishing',
+    'General'
+  ],
+    default: 'General'
     },
     due_date: {
         type: Date,

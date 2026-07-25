@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { User, Project,Card, Task } from '../models/index.js'
+import { User, Project, Snips, Tasks } from '../models/index.js'
 import { signToken, AuthenticationError} from '../utils/auth.js';
 
 const resolvers = {

@@ -18,18 +18,25 @@ const projectSchema = new Schema ({
     description: {
         type: String,
     },
-    share_id: {
-        type: String,
-        unique: true,
-        sparse: true
-    },
     color: {
         type: String,
         match: /^#([0-9A-Fa-f]{3}){1,2}$/
+    },
+    genre: {
+        type: String,
+        enum: ['Fantasy', 'Science-Fiction', 'Mystery', 'Thriller & Suspense', 'Horror', 'Historical Fiction', 'Romance', 'TTRPG', 'Other'],
+        default: null
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
     },
 },
 {
     timestamps: true
 });
+
+projectSchema.index({ user: 1 });
 
 export const Project = model('Project', projectSchema);
