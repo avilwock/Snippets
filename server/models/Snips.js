@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 const { Schema, model } = mongoose;
 
-const snipsSchema= new Schema ({
+const snipSchema= new Schema ({
     keyword: {
         type: String,
         required: true,
@@ -41,7 +41,7 @@ const snipsSchema= new Schema ({
     timestamps: true
 })
 
-snipsSchema.index({ user: 1 });
-snipsSchema.index({ project: 1 });
+snipSchema.index({ user: 1 });
+snipSchema.index({ project: 1 });
 
-export const Snips = model('Snips', snipsSchema);
+export const Snip = model('Snip', snipSchema);
