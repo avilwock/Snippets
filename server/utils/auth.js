@@ -29,9 +29,10 @@ const token = authHeader.startsWith('Bearer ')
 // Function to sign a JWT for a user
 export const signToken = (user) => {
   return jwt.sign(
-    { id: user._id, email: user.email },
+    { 
+      _id: user._id, email: user.email },
     process.env.JWT_SECRET,
-    { expiresIn: '2h' }
+    { expiresIn: '6h' }
   );
 };
 
