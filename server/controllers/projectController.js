@@ -55,7 +55,7 @@ export const deleteProject = async(req, res) => {
 
         const deletedProject = await Project.findOneAndDelete({
             _id: id,
-            user: req.user.id
+            user: req.user._id
         })
 
         if (!deletedProject) {
