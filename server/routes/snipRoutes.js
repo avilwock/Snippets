@@ -3,7 +3,7 @@ import {
     addSnip,
     editSnip,
     deleteSnip
-} from "../controllers/snipController.js";
+} from "../controllers/snipsController.js";
 import { authMiddleware } from "../utils/auth.js";
 
 const router = express.Router();

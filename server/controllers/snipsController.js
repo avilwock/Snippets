@@ -1,9 +1,9 @@
-import { Snips } from "../models/Snips.js"
+import { Snip } from "../models/Snips.js"
 
 export const addSnip = async(req, res) => {
     try {
 
-        const snip = await Snips.create({
+        const snip = await Snip.create({
             ...req.body,
             user:req.user._id})
         res.status(201).json({
@@ -22,7 +22,7 @@ export const editSnip = async(req, res) => {
     try {
         const { id } = req.params;
 
-        const updatedSnip = await Snips.findOneAndUpdate(
+        const updatedSnip = await Snip.findOneAndUpdate(
             {
                 _id: id,
                 user: req.user._id
@@ -51,7 +51,7 @@ export const deleteSnip = async(req, res) => {
     try {
         const { id } = req.params;
 
-        const deletedSnip = await Snips.findOneAndDelete({
+        const deletedSnip = await Snip.findOneAndDelete({
             _id: id,
             user: req.user._id
         })
