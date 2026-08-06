@@ -8,6 +8,8 @@ export const signup = async (req, res) => {
 
         const token = signToken(user);
 
+        user.password=undefined;
+
         res.status(201).json({
             token,
             user
@@ -26,6 +28,12 @@ export const login = async(req, res) => {
         const {email, password} = req.body;
 
         const user= await User.findOne({email}).select("+password");
+
+        user.password=undefined
+        
+        res.status(200).json({
+            token, user
+        })
 
         if(!user) {
             return res.status(401).json({
