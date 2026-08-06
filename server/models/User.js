@@ -49,5 +49,9 @@ userSchema.pre('save', async function() {
     }
 });
 
+userSchema.methods.isCorrectPassword = async function(password) {
+    return bcrypt.compare(password, this.password);
+}
+
 export const User = model('User', userSchema);
 

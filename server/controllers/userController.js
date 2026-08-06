@@ -4,7 +4,7 @@ import { signToken } from "../utils/auth.js";
 export const signup = async (req, res) => {
     try {
 
-        const users = await User.create(req.body);
+        const user = await User.create(req.body);
 
         const token = signToken(user);
 
@@ -25,7 +25,7 @@ export const login = async(req, res) => {
     try {
         const {email, password} = req.body;
 
-        const user= awaitUser.findOne({email}).select("+password");
+        const user= await User.findOne({email}).select("+password");
 
         if(!user) {
             return res.status(401).json({
@@ -61,7 +61,7 @@ export const editUser = async (req, res) => {
     try {
         const { id } = req.params;
 
-        if (req.user._id.toString() !== id && req.user.role !== "admin") {
+        if (req.user._id.toString() !== id) {
             return res.status(403).json({
                 message: "Not allowed"
             });
