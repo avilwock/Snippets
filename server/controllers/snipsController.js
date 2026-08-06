@@ -1,5 +1,46 @@
 import { Snip } from "../models/Snips.js"
 
+export const getSnip = async (req, res) => {
+    try {
+        const snip = await Snip.findOne({
+                    _id: req.params.id,
+                    user: req.user._id
+                });
+
+        if (!snip) {
+            return res.status(404).json({
+                message: "Snip not found"
+            });
+        }
+
+        res.status(200).json(snip);
+
+    } catch (error) {
+        console.error("Error getting snip:", error);
+
+        res.status(500).json({
+            message: "Failed to get snip"
+        });
+    }
+};
+
+export const getSnips = async (req, res) => {
+    try {
+        const snips = await Snip.find({
+            user: req.user._id
+        });
+
+        res.status(200).json(snips);
+
+    } catch (error) {
+        console.error("Error getting snips:", error);
+
+        res.status(500).json({
+            message: "Failed to get snips"
+        })
+    }
+}
+
 export const addSnip = async(req, res) => {
     try {
 

@@ -2,7 +2,10 @@ import { Project } from "../models/Project.js"
 
 export const getProject = async (req, res) => {
     try {
-        const project = await Project.findById(req.params.id);
+        const project = await Project.findOne({
+            _id: req.params.id,
+            user: req.user._id
+        });
 
         if (!project) {
             return res.status(404).json({

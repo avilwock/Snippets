@@ -1,5 +1,46 @@
 import { Task } from "../models/Task.js"
 
+export const getTask = async (req, res) => {
+    try {
+        const task = await Task.findOne({
+                    _id: req.params.id,
+                    user: req.user._id
+                });
+
+        if (!task) {
+            return res.status(404).json({
+                message: "Task not found"
+            });
+        }
+
+        res.status(200).json(task);
+
+    } catch (error) {
+        console.error("Error getting task:", error);
+
+        res.status(500).json({
+            message: "Failed to get task"
+        });
+    }
+};
+
+export const getTasks = async (req, res) => {
+    try {
+        const tasks = await Task.find({
+            user: req.user._id
+        });
+
+        res.status(200).json(tasks);
+
+    } catch (error) {
+        console.error("Error getting tasks:", error);
+
+        res.status(500).json({
+            message: "Failed to get tasks"
+        })
+    }
+}
+
 export const addTask = async(req, res) => {
     try {
 

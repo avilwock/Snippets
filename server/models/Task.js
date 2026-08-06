@@ -7,14 +7,14 @@ const taskSchema = new Schema ({
         required: true
     },
     tag: {
-  type: String,
-  enum: [
-    'Research',
-    'Drafting',
-    'Editing',
-    'Publishing',
-    'General'
-  ],
+    type: String,
+    enum: [
+        'Research',
+        'Drafting',
+        'Editing',
+        'Publishing',
+        'General'
+    ],
     default: 'General'
     },
     due_date: {
