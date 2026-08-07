@@ -46,17 +46,11 @@ export const signup = async (req, res) => {
 
 export const login = async(req, res) => {
     try {
-        const {email, password} = req.body;
+        const { email, password } = req.body;
 
-        const user= await User.findOne({email}).select("+password");
+        const user = await User.findOne({ email }).select("+password");
 
-        user.password=undefined
-
-        res.status(200).json({
-            token, user
-        })
-
-        if(!user) {
+        if (!user) {
             return res.status(401).json({
                 message: "Not a valid user"
             });
@@ -67,10 +61,12 @@ export const login = async(req, res) => {
         if (!correctPw) {
             return res.status(401).json({
                 message: "Incorrect password"
-            })
+            });
         }
 
         const token = signToken(user);
+
+        user.password = undefined;
 
         res.status(200).json({
             token,
@@ -78,13 +74,13 @@ export const login = async(req, res) => {
         });
 
     } catch (error) {
-        console.error("Login error:", error)
+        console.error("Login error:", error);
 
         res.status(500).json({
             message: "Login failed"
         });
     }
-}
+};
 
 export const editUser = async (req, res) => {
     try {

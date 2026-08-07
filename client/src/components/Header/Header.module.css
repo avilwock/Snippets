@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 1.5rem
+}
+
+.menubutton {
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}

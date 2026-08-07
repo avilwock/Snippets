@@ -1,28 +1,34 @@
 import { useState } from "react";
 import api from "../api/api";
+import { useNavigate } from "react-router-dom"
 
 function Signup() {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSignup = async () => {
 
         try {
-        const response = await api.post("/user/", {
-            email,
-            username,
-            password
-        });
+            const response = await api.post("/user/", {
+                email,
+                username,
+                password
+            });
 
-        localStorage.setItem("token", response.data.token);
+            localStorage.setItem("token", response.data.token);
 
-        console.log(response.data);
+            console.log(response.data);
 
-    } catch (error) {
-        console.error("Signup failed:", error.response?.data || error.message);
-    }
+            navigate ("/dashboard")
+
+        } catch (error) {
+            console.error("Signup failed:", error.response?.data || error.message);
+        }
     };
+
+    
 
     return (
         <>
