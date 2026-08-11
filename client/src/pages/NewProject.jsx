@@ -1,44 +1,53 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from "../components/Button/Button"
 
 function NewProject() {
   const [project_name, setProjectName] = useState('');
   const [description, setDescription] = useState('');
   const [color, setColor] = useState('#000000');
-  const [genre, setGenre] = useState('');
+  const [genre, setGenre] = useState([]);
 
   const navigate=useNavigate();
+
+  const handleGenreChange = (e) => {
+    const {value, checked} = e.target;
+
+    if (checked) {
+        setGenre([...genre,value]);
+    } else {
+        setGenre(genre.filter((item) => item !== value))
+    }
+  }
 
   const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const response = await fetch('/api/project', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                },
-                body: JSON.stringify({
-                    project_name: project_name,
-                    description,
-                    color,
-                    genre: genre || null
-                })
-            });
+            try {
+                const response = await fetch('/api/project', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+            project_name,
+            description,
+            color,
+            genre: genre || null
+        })
+    });
 
-            const text = await response.text();
+    const data = await response.json();
 
-            console.log('Response status:', response.status);
-            console.log('Response:', text);
+    if (!response.ok) {
+        throw new Error(data.message || 'Failed to create project');
+    }
 
-            if (!response.ok) {
-                throw new Error(text.message || 'Failed to create project');
-            }
+    console.log('Project created:', data.project);
 
-            navigate('/dashboard');
+    navigate('/dashboard');
 
-            console.log('Project created:', text.project);
         } catch (error) {
             console.error('Error creating project:', error);
         }
@@ -78,25 +87,102 @@ function NewProject() {
 
         <label>
           Genre
-          <select
-            value={genre}
-            onChange={(e) => setGenre(e.target.value)}
-          >
-            <option value="">None</option>
-            <option value="Fantasy">Fantasy</option>
-            <option value="Science-Fiction">Science-Fiction</option>
-            <option value="Mystery">Mystery</option>
-            <option value="Thriller & Suspense">Thriller & Suspense</option>
-            <option value="Horror">Horror</option>
-            <option value="Historical Fiction">Historical Fiction</option>
-            <option value="Romance">Romance</option>
-            <option value="TTRPG">TTRPG</option>
-          </select>
+          <label>Genre</label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Fantasy"
+                    checked={genre.includes("Fantasy")}
+                    onChange={handleGenreChange}
+                />
+                Fantasy
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Science-Fiction"
+                    checked={genre.includes("Science-Fiction")}
+                    onChange={handleGenreChange}
+                />
+                Science-Fiction
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Mystery"
+                    checked={genre.includes("Mystery")}
+                    onChange={handleGenreChange}
+                />
+                Mystery
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Thriller & Suspense"
+                    checked={genre.includes("Thriller & Suspense")}
+                    onChange={handleGenreChange}
+                />
+                Thriller & Suspense
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Horror"
+                    checked={genre.includes("Horror")}
+                    onChange={handleGenreChange}
+                />
+                Horror
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Historical Fiction"
+                    checked={genre.includes("Historical Fiction")}
+                    onChange={handleGenreChange}
+                />
+                Historical Fiction
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Romance"
+                    checked={genre.includes("Romance")}
+                    onChange={handleGenreChange}
+                />
+                Romance
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="TTRPG"
+                    checked={genre.includes("TTRPG")}
+                    onChange={handleGenreChange}
+                />
+                TTRPG
+            </label>
+
+            <label>
+                <input
+                    type="checkbox"
+                    value="Comedy"
+                    checked={genre.includes("Comedy")}
+                    onChange={handleGenreChange}
+                />
+                Comedy
+            </label>
         </label>
 
-        <button type="submit">
-          Create Project
-        </button>
+        <Button type="submit">
+                Add Project
+            </Button>
       </form>
     </div>
   );

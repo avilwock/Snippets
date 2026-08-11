@@ -23,9 +23,19 @@ const projectSchema = new Schema ({
         match: /^#([0-9A-Fa-f]{3}){1,2}$/
     },
     genre: {
-        type: String,
-        enum: ['Fantasy', 'Science-Fiction', 'Mystery', 'Thriller & Suspense', 'Horror', 'Historical Fiction', 'Romance', 'TTRPG', 'Other'],
-        default: null
+    type: [String],
+    enum: [
+        'Fantasy',
+        'Science-Fiction',
+        'Mystery',
+        'Thriller & Suspense',
+        'Horror',
+        'Historical Fiction',
+        'Romance',
+        'TTRPG',
+        'Comedy'
+    ],
+    default: []
     },
     user: {
         type: Schema.Types.ObjectId,

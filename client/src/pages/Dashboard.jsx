@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Button from "../components/Button/Button"
 
 function Dashboard() {
     const navigate=useNavigate();
@@ -6,9 +7,9 @@ function Dashboard() {
         <div>
             <h1>Dashboard</h1>
 
-            <button onClick={() => navigate('/new-project')}>
+            <Button onClick={() => navigate('/new-project')}>
                 + New Project
-            </button>
+            </Button>
         </div>
     )
 }
