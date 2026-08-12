@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 const { Schema, model } = mongoose;
 
 const snipSchema= new Schema ({
-    keyword: {
+    content: {
         type: String,
         required: true,
         validate: {
@@ -11,7 +11,7 @@ const snipSchema= new Schema ({
             },
         }
     },
-    description: {
+    notes: {
         type:String,
     },
     type: {

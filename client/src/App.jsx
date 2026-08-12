@@ -4,6 +4,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header/Header";
 import NewProject from "./pages/NewProject";
+import NewSnip from "./pages/NewSnip";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-project" element={<NewProject />} />
+        <Route path="/new-snip" element={<NewSnip />} />
       </Routes>
     </BrowserRouter>
   );
