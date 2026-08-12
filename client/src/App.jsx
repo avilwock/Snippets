@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Header from "./components/Header/Header";
 import NewProject from "./pages/NewProject";
 import NewSnip from "./pages/NewSnip";
+import NewTask from "./pages/NewTask";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/new-project" element={<NewProject />} />
         <Route path="/new-snip" element={<NewSnip />} />
+        <Route path="/new-task" element={<NewTask />} />
       </Routes>
     </BrowserRouter>
   );
