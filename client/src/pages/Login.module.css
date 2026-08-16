@@ -1,0 +1,25 @@
+.login {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+input {
+    border-radius: 4px;
+    height: 1.5 rem;
+    width: 16rem;
+}
+
+.logo {
+    font-size: 100px;
+    margin-bottom: 90px;
+}

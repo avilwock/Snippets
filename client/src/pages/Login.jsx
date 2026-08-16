@@ -2,6 +2,9 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 import Button from "../components/Button/Button"
+import styles from "../pages/Login.module.css"
+import { FaLightbulb } from "react-icons/fa"
+
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -32,23 +35,31 @@ function Login() {
     
 
     return (
-        <>
-            <input 
-                placeholder="Email"
-                onChange={(e) => setEmail(e.target.value)}
-            />
+    <div className={styles.login}>
 
-            <input
-                placeholder="Password"
-                type="password"
-                onChange={(e) => setPassword(e.target.value)}
-            />
+    <FaLightbulb className={styles.logo} />
+        <input
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+        />
 
+        <input
+            placeholder="Password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <div className={styles.buttons}>
             <Button onClick={handleLogin}>
                 Login
             </Button>
-        </>
-    );
+
+            <Button onClick={() => navigate('/signup')}>
+                Sign Up
+            </Button>
+        </div>
+    </div>
+);
 }
 
 export default Login;

@@ -9,3 +9,9 @@
     margin: 0 auto;
   }
 }
+
+.logbutton {
+ display:flex;
+ flex-direction: column;
+ justify-self: center;
+}
