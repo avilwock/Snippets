@@ -6,6 +6,7 @@ import Header from "./components/Header/Header";
 import NewProject from "./pages/NewProject";
 import NewSnip from "./pages/NewSnip";
 import NewTask from "./pages/NewTask";
+import Projects from "./pages/Projects";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/new-project" element={<NewProject />} />
         <Route path="/new-snip" element={<NewSnip />} />
         <Route path="/new-task" element={<NewTask />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
     </BrowserRouter>
   );

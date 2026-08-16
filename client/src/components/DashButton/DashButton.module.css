@@ -1,0 +1,7 @@
+.dashbutton {
+   width: 45px;
+   height: 45px;
+   border-radius: 15px;
+   border: 2px black solid;
+   font-size: 1.5rem;
+}

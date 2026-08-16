@@ -1,7 +1,6 @@
 .header {
     display: flex;
     flex-direction:row;
-    align-items: center;
     justify-content: space-between;
     padding: 1rem;
 }
@@ -12,8 +11,14 @@
 }
 
 .menubutton {
-    border: none;
+    border: 2px black solid;
+    border-radius: 15px;
+    width: 45px;
+    height: 45px;
     background: none;
     font-size: 1.5rem;
     cursor: pointer;
+    display:flex;
+    align-items:center;
+    justify-content: center;
 }

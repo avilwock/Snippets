@@ -16,6 +16,9 @@ function Dashboard() {
             <Button onClick={()=> navigate('/new-task')}>
                 + New Task
             </Button>
+            <Button onClick={() => navigate('/projects')}>
+                Projects
+            </Button>
         </div>
     )
 }
