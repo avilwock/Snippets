@@ -6,19 +6,29 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-
-            <Button onClick={() => navigate('/new-project')}>
-                + New Project
-            </Button>
-            <Button onClick={() => navigate('/new-snip')}>
-                + New Snip
+            <div>
+                <Button onClick={() => navigate('/projects')}>
+                    Projects
                 </Button>
-            <Button onClick={()=> navigate('/new-task')}>
-                + New Task
-            </Button>
-            <Button onClick={() => navigate('/projects')}>
-                Projects
-            </Button>
+                <Button onClick={() => navigate('/snips')}>
+                    Snippets
+                </Button>
+                <Button onClick={() => navigate('/tasks')}>
+                    Tasks
+                </Button>
+            </div>
+            <div>
+                <Button onClick={() => navigate('/new-project')}>
+                    +
+                </Button>
+                <Button onClick={() => navigate('/new-snip')}>
+                    + 
+                    </Button>
+                <Button onClick={()=> navigate('/new-task')}>
+                    + 
+                </Button>
+            </div>
+        
         </div>
     )
 }

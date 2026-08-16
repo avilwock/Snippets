@@ -7,6 +7,9 @@ import NewProject from "./pages/NewProject";
 import NewSnip from "./pages/NewSnip";
 import NewTask from "./pages/NewTask";
 import Projects from "./pages/Projects";
+import Snips from "./pages/Snips";
+import Tasks from "./pages/Tasks";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
         <Route path="/new-snip" element={<NewSnip />} />
         <Route path="/new-task" element={<NewTask />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/snips" element={<Snips />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path ="/settings" element={<Settings />} />
       </Routes>
     </BrowserRouter>
   );
