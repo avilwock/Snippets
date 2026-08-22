@@ -1,7 +1,7 @@
 import styles from "../NavMenu/NavMenu.module.css"
 import { useNavigate } from 'react-router-dom'
 import { FiSettings } from "react-icons/fi";
-import { FaUser, FaTimes } from "react-icons/fa"
+import { FaUser, FaTimes, FaSearch } from "react-icons/fa"
 
 function NavMenu({onClose}) {
     const navigate = useNavigate();
@@ -42,6 +42,12 @@ function NavMenu({onClose}) {
                     Tasks
                 </button>
                 <div className={styles.settings}>
+                    <button
+                        className = {styles.button}
+                            onClick ={() => {onClose();
+                            navigate('/search')}}>
+                        <FaSearch />
+                    </button>
                     <button
                         className={styles.button}
                             onClick={() => {onClose();

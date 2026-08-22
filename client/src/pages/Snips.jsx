@@ -20,11 +20,12 @@ function Snips() {
 
     return (
         <div>
-            <h1>Snips</h1>
+            <h1 style ={{marginBottom: "50px"}}>Snips</h1>
 
             <Button onClick={() => navigate('/new-snip')}>
                 +
             </Button>
+            <br></br>
 
             {snips.map((snip) => (
             <Button

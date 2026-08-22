@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import {useEffect, useState} from "react"
+// import {useEffect, useState} from "react"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -13,26 +13,28 @@ import Tasks from "./pages/Tasks";
 import Settings from "./pages/Settings";
 import Project from "./pages/Project";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
-import SplashScreen from "./pages/SplashScreen"
+// import SplashScreen from "./pages/SplashScreen"
 import Task from "./pages/Task"
 import Snip from "./pages/Snip"
+import Search from "./pages/Search"
+import Profile from "./pages/Profile"
 
 
 function App() {
 
-  const [showSplash, setShowSplash] = useState(true);
+  // const [showSplash, setShowSplash] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowSplash(false);
-    }, 2000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowSplash(false);
+  //   }, 2000);
 
-    return () => clearTimeout(timer);
-  }, [])
+  //   return () => clearTimeout(timer);
+  // }, [])
 
-  if (showSplash) {
-    return <SplashScreen />
-  }
+  // if (showSplash) {
+  //   return <SplashScreen />
+  // }
   return (
     <BrowserRouter>
     <Header></Header>
@@ -52,6 +54,8 @@ function App() {
           <Route path="/project/:id" element={<Project />} />
           <Route path="/task/:id" element ={<Task />} />
           <Route path="/snip/:id" element={<Snip />} />
+          <Route path="/search" element ={<Search />} />
+          <Route path="/profile" element ={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
