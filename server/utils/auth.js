@@ -4,6 +4,7 @@ export const authMiddleware = (req, res, next) => {
   const body = req.body || {};
   
   const authHeader = req.headers.authorization;
+  console.log("AUTH HEADER:", authHeader);
 
 if (!authHeader) {
   return next();
@@ -18,9 +19,12 @@ const token = authHeader.startsWith('Bearer ')
       const cleanToken = token.startsWith('Bearer ') ? token.split(' ')[1] : token;
       const decoded = jwt.verify(cleanToken, process.env.JWT_SECRET);
       req.user = decoded;
-    } catch (err) {
-      console.error('Invalid token', err);
-    }
+    }  catch (err) {
+    console.error("Invalid token:", err);
+    return res.status(401).json({
+        message: "Invalid token"
+    });
+}
   }
 
   next();

@@ -42,6 +42,10 @@ const projectSchema = new Schema ({
         ref: 'User',
         required: true
     },
+    series: {
+        type: Schema.Types.ObjectId,
+        ref: 'Series',
+    }
 },
 {
     timestamps: true

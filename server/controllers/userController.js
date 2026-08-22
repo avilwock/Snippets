@@ -95,7 +95,7 @@ export const editUser = async (req, res) => {
         const updatedUser = await User.findByIdAndUpdate(
             id,
             { $set: req.body },
-            { new: true }
+            { returnDocument: "after" }
         );
 
         if (!updatedUser) {

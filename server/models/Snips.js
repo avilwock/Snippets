@@ -35,6 +35,10 @@ const snipSchema= new Schema ({
     project: {
         type: Schema.Types.ObjectId,
         ref:'Project'
+    },
+    series: {
+        type: Schema.Types.ObjectId,
+        ref: 'Series'
     }
 },
 {

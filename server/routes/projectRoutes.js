@@ -8,6 +8,7 @@ import {
     deleteProject
 } from "../controllers/projectController.js"
 import { authMiddleware } from "../utils/auth.js"
+
 const router = express.Router();
 
 router.get("/:id", authMiddleware, getProject);

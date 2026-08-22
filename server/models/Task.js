@@ -28,6 +28,10 @@ const taskSchema = new Schema ({
     project: {
         type: Schema.Types.ObjectId,
         ref: 'Project',
+    },
+    series: {
+        type: Schema.Types.ObjectId,
+        ref: 'Series',
     }
 }, {
     timestamps: true

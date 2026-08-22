@@ -71,7 +71,7 @@ export const editProject = async(req, res) => {
                 user: req.user._id
             },
             { $set: req.body },
-            { new: true }
+            { returnDocument: "after" }
         );
 
         if (!updatedProject) {
