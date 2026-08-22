@@ -11,7 +11,8 @@ function Login() {
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
+        e.preventDefault();
         
         try {
             const response = await api.post("/user/login", {
@@ -38,26 +39,32 @@ function Login() {
     <div className={styles.login}>
 
     <FaLightbulb className={styles.logo} />
-        <input
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-        />
+        <form onSubmit = {handleLogin}>
+            <div className="inputs">
+                <input
+                    placeholder="Email"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
 
-        <input
-            placeholder="Password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-        />
+                <input
+                    placeholder="Password"
+                    type="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
 
-        <div className={styles.buttons}>
-            <Button onClick={handleLogin}>
-                Login
-            </Button>
+            <div className={styles.buttons}>
+                <Button type="submit">
+                    Login
+                </Button>
 
-            <Button onClick={() => navigate('/signup')}>
-                Sign Up
-            </Button>
-        </div>
+                <Button 
+                type="button"
+                onClick={() => navigate('/signup')}>
+                    Sign Up
+                </Button>
+            </div>
+        </form>
     </div>
 );
 }

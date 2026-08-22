@@ -41,6 +41,12 @@ function NavMenu({onClose}) {
                         navigate('/tasks')}}>
                     Tasks
                 </button>
+                <button
+                    className={styles.button}
+                        onClick={() => {onClose();
+                        navigate('/series')}}>
+                    Series
+                </button>
                 <div className={styles.settings}>
                     <button
                         className = {styles.button}

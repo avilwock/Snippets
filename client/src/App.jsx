@@ -18,6 +18,8 @@ import Task from "./pages/Task"
 import Snip from "./pages/Snip"
 import Search from "./pages/Search"
 import Profile from "./pages/Profile"
+import SeriesList from "./pages/SeriesList"
+import EditProject from "./pages/EditProject"
 
 
 function App() {
@@ -56,6 +58,8 @@ function App() {
           <Route path="/snip/:id" element={<Snip />} />
           <Route path="/search" element ={<Search />} />
           <Route path="/profile" element ={<Profile />} />
+          <Route path="/series" element ={<SeriesList />} />
+          <Route path="/project/:id/edit" element ={<EditProject />} />
         </Route>
       </Routes>
     </BrowserRouter>

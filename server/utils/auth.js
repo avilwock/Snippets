@@ -36,7 +36,7 @@ export const signToken = (user) => {
     { 
       _id: user._id, email: user.email },
     process.env.JWT_SECRET,
-    { expiresIn: '6h' }
+    { expiresIn: '3d' }
   );
 };
 

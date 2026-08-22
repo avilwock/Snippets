@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+// import Button from "../components/Button/Button"
+import { FaEdit } from "react-icons/fa"
 
 function Project() {
 
     const { id } = useParams();
     const [project, setProject] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`/api/project/${id}`, {
@@ -24,6 +27,10 @@ function Project() {
     return (
         <div>
             <h1>{project.project_name}</h1>
+            <button onClick={() =>
+                        navigate(`/project/${project._id}/edit`)}>
+                <FaEdit size={20}/>
+                </button>
             <p>{project.description}</p>
             <p>{project.genre}</p>
         </div>

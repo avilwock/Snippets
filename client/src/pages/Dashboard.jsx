@@ -30,6 +30,14 @@ function Dashboard() {
                     + 
                 </Button>
             </div>
+            <div>
+                <Button onClick={() => navigate('/series')}>
+                    Series
+                </Button>
+                 <Button onClick={() => navigate('/new-weries')}>
+                    +
+                </Button>
+            </div>
         
         </div>
     )
