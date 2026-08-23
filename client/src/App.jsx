@@ -22,7 +22,7 @@ import SeriesList from "./pages/SeriesList"
 import EditProject from "./pages/EditProject"
 import NewSeries from "./pages/NewSeries"
 import Series from "./pages/Series"
-
+import EditSeries from "./pages/EditSeries"
 
 function App() {
 
@@ -64,6 +64,7 @@ function App() {
           <Route path="/project/:id/edit" element ={<EditProject />} />
           <Route path="/new-series" element = {<NewSeries />} />
           <Route path="/series/:id" element ={<Series />} />
+          <Route path="/series/:id/edit" element = {<EditSeries />} />
         </Route>
       </Routes>
     </BrowserRouter>
