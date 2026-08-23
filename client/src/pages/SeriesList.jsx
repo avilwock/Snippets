@@ -17,7 +17,7 @@ function SeriesList () {
         .then((response) => response.json())
         .then((data) => setSeriesList(data))
         .catch((error) => console.error(error));
-    })
+    }, [])
     return (
         <div>
         <h1>Series</h1>
