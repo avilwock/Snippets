@@ -23,7 +23,7 @@ import EditProject from "./pages/EditProject"
 import NewSeries from "./pages/NewSeries"
 import Series from "./pages/Series"
 import EditSeries from "./pages/EditSeries"
-
+import EditSnip from "./pages/EditSnip"
 function App() {
 
   // const [showSplash, setShowSplash] = useState(true);
@@ -65,6 +65,7 @@ function App() {
           <Route path="/new-series" element = {<NewSeries />} />
           <Route path="/series/:id" element ={<Series />} />
           <Route path="/series/:id/edit" element = {<EditSeries />} />
+          <Route path="/snip/:id/edit" element ={<EditSnip />} />
         </Route>
       </Routes>
     </BrowserRouter>

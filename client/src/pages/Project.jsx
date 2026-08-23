@@ -28,9 +28,9 @@ function Project() {
         <div>
             <h1>{project.project_name}</h1>
             <button onClick={() =>
-                        navigate(`/project/${project._id}/edit`)}>
-                <FaEdit size={20}/>
-                </button>
+                navigate(`/project/${project._id}/edit`)}>
+            <FaEdit size={20}/>
+            </button>
             <p>{project.description}</p>
             <p>{project.genre}</p>
         </div>

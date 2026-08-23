@@ -14,7 +14,7 @@ const snipSchema= new Schema ({
     notes: {
         type:String,
     },
-    type: {
+    type: [{
         type:String,
         enum: [
             'Character',
@@ -26,7 +26,7 @@ const snipSchema= new Schema ({
             'Misc',
         ],
         default: null
-    },
+    }],
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
