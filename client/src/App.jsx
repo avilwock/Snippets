@@ -21,6 +21,7 @@ import Profile from "./pages/Profile"
 import SeriesList from "./pages/SeriesList"
 import EditProject from "./pages/EditProject"
 import NewSeries from "./pages/NewSeries"
+import Series from "./pages/Series"
 
 
 function App() {
@@ -62,6 +63,7 @@ function App() {
           <Route path="/series" element ={<SeriesList />} />
           <Route path="/project/:id/edit" element ={<EditProject />} />
           <Route path="/new-series" element = {<NewSeries />} />
+          <Route path="/series/:id" element ={<Series />} />
         </Route>
       </Routes>
     </BrowserRouter>
