@@ -71,9 +71,9 @@ function NewTask() {
                 <label>
                     Due Date
                     <input
-                    type="date"
-                    value={dueDate}
-                    onChange={(e) => setDueDate(e.target.value)}
+                        type="date"
+                        value={dueDate}
+                        onChange={(e) => setDueDate(e.target.value)}
                     />
                 </label>
 

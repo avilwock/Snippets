@@ -1,11 +1,14 @@
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+
+import { FaEdit } from "react-icons/fa";
 
 function Task() {
 
     const { id } = useParams();
     const [task, setTask] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`/api/task/${id}`, {
@@ -24,7 +27,13 @@ function Task() {
 
     return (
         <div>
+            <button onClick={() =>
+                navigate(`/task/${task._id}/edit`)}>
+            <FaEdit size={20}/>
+            </button>
             <h1>{task.content}</h1>
+            <p>{new Date(task.due_date).toLocaleDateString()}</p>
+            <p>{task.type}</p>
         </div>
     );
 }

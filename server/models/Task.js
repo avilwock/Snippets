@@ -6,17 +6,17 @@ const taskSchema = new Schema ({
         type: String,
         required: true
     },
-    type: {
-    type: String,
-    enum: [
-        'Research',
-        'Drafting',
-        'Editing',
-        'Publishing',
-        'General'
-    ],
-    default: 'General'
-    },
+    type:[ {
+        type: String,
+        enum: [
+            'Research',
+            'Drafting',
+            'Editing',
+            'Publishing',
+            'General'
+        ],
+        default: 'General'
+    }],
     due_date: {
         type: Date,
     },

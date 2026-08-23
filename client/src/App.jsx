@@ -24,6 +24,8 @@ import NewSeries from "./pages/NewSeries"
 import Series from "./pages/Series"
 import EditSeries from "./pages/EditSeries"
 import EditSnip from "./pages/EditSnip"
+import EditTask from "./pages/Edit Task"
+
 function App() {
 
   // const [showSplash, setShowSplash] = useState(true);
@@ -66,6 +68,7 @@ function App() {
           <Route path="/series/:id" element ={<Series />} />
           <Route path="/series/:id/edit" element = {<EditSeries />} />
           <Route path="/snip/:id/edit" element ={<EditSnip />} />
+          <Route path="/task/:id/edit" element ={<EditTask />} />
         </Route>
       </Routes>
     </BrowserRouter>
