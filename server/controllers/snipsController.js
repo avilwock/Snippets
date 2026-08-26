@@ -5,7 +5,7 @@ export const getSnip = async (req, res) => {
         const snip = await Snip.findOne({
                     _id: req.params.id,
                     user: req.user._id
-                });
+                }).populate("project");
 
         if (!snip) {
             return res.status(404).json({

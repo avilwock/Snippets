@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 // import Button from "../components/Button/Button"
-import { FaEdit } from "react-icons/fa"
+import { FaEdit, FaArrowLeft } from "react-icons/fa"
 
 function Project() {
 
@@ -26,6 +26,10 @@ function Project() {
 
     return (
         <div>
+            <button onClick={() =>
+                navigate(`/projects`)}>
+            <FaArrowLeft/>
+            </button>
             <h1>{project.project_name}</h1>
             <button onClick={() =>
                 navigate(`/project/${project._id}/edit`)}>

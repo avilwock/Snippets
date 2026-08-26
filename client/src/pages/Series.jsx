@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, useNavigate }from "react-router-dom";
-import { FaEdit } from "react-icons/fa"
+import { FaEdit, FaArrowLeft } from "react-icons/fa"
 
 function Series() {
 
@@ -26,6 +26,10 @@ function Series() {
 
     return(
         <div>
+            <button onClick={() =>
+                navigate(`/series`)}>
+            <FaArrowLeft/>
+            </button>
             <h1>{series.seriesTitle}</h1>
             <button onClick={() => 
                 navigate(`/series/${series._id}/edit`)}>

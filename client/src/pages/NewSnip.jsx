@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from "../components/Button/Button";
 
@@ -6,8 +6,33 @@ function NewSnip() {
     const [content, setContent] = useState('');
     const [type, setType] = useState('');
     const [notes, setNotes] = useState('');
+    
+    const [project, setProject] = useState('');
+    const [projects, setProjects] = useState([]);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+    fetch('/api/project', {
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error('Failed to get projects');
+            }
+
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Projects response:", data);
+            console.log("PROJECT DATA:", data);
+            console.log("IS ARRAY:", Array.isArray(data));
+            setProjects(data);
+        })
+        .catch((error) => console.error('Error getting projects:', error));
+}, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -21,8 +46,9 @@ function NewSnip() {
                 },
                 body: JSON.stringify({
                     content,
-                    type,
-                    notes
+                    type: type ? [type]: [],
+                    notes,
+                    project: project || null
                 })
             });
 
@@ -67,6 +93,21 @@ function NewSnip() {
                         <option value="Worldbuilding">World Building</option>
                         <option value="Scene">Scene</option>
                         <option value="Misc">Misc</option>
+                    </select>
+                </label>
+                <label>
+                    Project
+                    <select
+                        value={project}
+                        onChange={(e) => setProject(e.target.value)}
+                    >
+                        <option value="">No project</option>
+
+                        {projects.map((project) => (
+                            <option key={project._id} value={project._id}>
+                                {project.project_name}
+                            </option>
+                        ))}
                     </select>
                 </label>
 
