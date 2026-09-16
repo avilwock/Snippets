@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa"
 
 import Button from "../components/Button/Button"
 
@@ -88,6 +89,10 @@ console.log("IS ARRAY:", Array.isArray(data.type))
 
   return (
     <div>
+        <button onClick={() =>
+            navigate(-1)}>
+        <FaArrowLeft/>
+        </button>
         <h1>Edit Snip</h1>
 
         <form onSubmit={handleSubmit}>

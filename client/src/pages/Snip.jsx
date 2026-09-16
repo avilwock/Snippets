@@ -64,8 +64,8 @@ function Snip() {
 
     return (
         <div>
-            <button onClick={() =>
-                navigate(`/snips`)}>
+             <button onClick={() =>
+                navigate(-1)}>
             <FaArrowLeft/>
             </button>
             <button onClick={() =>
@@ -78,7 +78,7 @@ function Snip() {
             <h1>{snip.content}</h1>
             <p>{snip.notes}</p>
             <p>{snip.type.join(", ")}</p>
-            <p> Project: {snip.project ? snip.project.project_name: "No Project"}</p>
+            {/* <p> Project: {snip.project ? snip.project.project_name: "No Project"}</p> */}
             {snip.project ? (
     <p>
         Project:{" "}

@@ -27,9 +27,10 @@ function Project() {
     return (
         <div>
             <button onClick={() =>
-                navigate(`/projects`)}>
+                navigate(-1)}>
             <FaArrowLeft/>
             </button>
+
             <h1>{project.project_name}</h1>
             <button onClick={() =>
                 navigate(`/project/${project._id}/edit`)}>

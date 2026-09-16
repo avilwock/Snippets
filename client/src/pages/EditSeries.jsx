@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import Button from "../components/Button/Button"
+import { FaArrowLeft } from "react-icons/fa"
 
 function EditSeries() {
     const { id } = useParams();
@@ -71,6 +72,10 @@ function EditSeries() {
 
     return (
         <div>
+            <button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </button>
             <h1> Edit Series </h1>
             <form onSubmit = {handleSubmit}>
                 <label>

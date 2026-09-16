@@ -58,10 +58,10 @@ function Task() {
 
     return (
         <div>
-            <button onClick={() =>
-                            navigate(`/tasks`)}>
-                        <FaArrowLeft/>
-                        </button>
+             <button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </button>
             <button onClick={() =>
                 navigate(`/task/${task._id}/edit`)}>
             <FaEdit size={20}/>

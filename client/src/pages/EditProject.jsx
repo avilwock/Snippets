@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { FaArrowLeft } from "react-icons/fa"
 
 import Button from "../components/Button/Button"
 
@@ -89,6 +90,10 @@ function EditProject() {
 
   return (
     <div>
+        <button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </button>
         <h1>Edit Project</h1>
 
         <form onSubmit={handleSubmit}>
