@@ -24,7 +24,8 @@ import NewSeries from "./pages/NewSeries"
 import Series from "./pages/Series"
 import EditSeries from "./pages/EditSeries"
 import EditSnip from "./pages/EditSnip"
-import EditTask from "./pages/Edit Task"
+import EditTask from "./pages/EditTask"
+import HomeRedirect from "./components/HomeRedirect"
 
 function App() {
 
@@ -45,7 +46,7 @@ function App() {
     <BrowserRouter>
     <Header></Header>
       <Routes>
-        <Route path="/" element ={<Login />} />
+        <Route path="/" element ={<HomeRedirect />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<ProtectedRoute />}>

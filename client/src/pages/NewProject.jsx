@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from "../components/Button/Button"
+import { FaArrowLeft } from "react-icons/fa"
 
 function NewProject() {
   const [project_name, setProjectName] = useState('');
@@ -56,6 +57,10 @@ function NewProject() {
   return (
     <div>
       <h1>New Project</h1>
+      <Button onClick={() =>
+            navigate(-1)}>
+        <FaArrowLeft/>
+        </Button>
 
       <form onSubmit={handleSubmit}>
         <label>

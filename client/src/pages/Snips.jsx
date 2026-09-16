@@ -1,6 +1,7 @@
 import Button from "../components/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa"
 
 function Snips() {
 
@@ -21,7 +22,10 @@ function Snips() {
     return (
         <div>
             <h1 style ={{marginBottom: "50px"}}>Snips</h1>
-
+            <Button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </Button>
             <Button onClick={() => navigate('/new-snip')}>
                 +
             </Button>

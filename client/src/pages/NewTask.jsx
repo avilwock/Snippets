@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from "../components/Button/Button";
+import { FaArrowLeft } from "react-icons/fa"
 
 function NewTask() {
     const [content, setContent] = useState('');
@@ -43,6 +44,10 @@ function NewTask() {
     return (
         <div>
             <h1>New Task</h1>
+            <Button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </Button>
 
             <form onSubmit={handleSubmit}>
                 <label>

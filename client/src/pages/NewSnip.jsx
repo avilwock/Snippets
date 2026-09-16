@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from "../components/Button/Button";
+import { FaArrowLeft } from "react-icons/fa"
 
 function NewSnip() {
     const [content, setContent] = useState('');
@@ -69,6 +70,10 @@ function NewSnip() {
     return (
         <div>
             <h1>New Snip</h1>
+            <Button onClick={() =>
+                navigate(-1)}>
+            <FaArrowLeft/>
+            </Button>
 
             <form onSubmit={handleSubmit}>
                 <label>
