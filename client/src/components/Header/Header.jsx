@@ -23,8 +23,6 @@ function Header() {
                 {isMenuOpen ? <FiX /> : <FiMenu />}
             </button>
 
-            {isMenuOpen && <NavMenu />}
-
             {isMenuOpen && (
                 <NavMenu onClose={() => setIsMenuOpen(false)} />
             )}

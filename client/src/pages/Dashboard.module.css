@@ -1,0 +1,20 @@
+.priorityBorder {
+    border: 3px solid black;
+    outset: 10px 13px;
+    width: 80%;
+    justify-self: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.priorityBorder Button {
+    width: 10rem;
+}
+
+.buttonSort {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+

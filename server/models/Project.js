@@ -37,6 +37,10 @@ const projectSchema = new Schema ({
     ],
     default: []
     },
+    priority: {
+        type: Boolean,
+        default: false
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
