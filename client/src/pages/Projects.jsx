@@ -26,11 +26,11 @@ function Projects() {
                 <h1>Projects</h1>
 
                 <div className={styles.projectsActions}>
-                    <Button className={styles.actionButton} onClick={() => navigate(-1)}>
+                    <Button className={styles.topButton} onClick={() => navigate(-1)}>
                         <FaArrowLeft />
                     </Button>
 
-                    <Button className={styles.actionButton} onClick={() => navigate("/new-project")}>
+                    <Button className={styles.topButton} onClick={() => navigate("/new-project")}>
                         <FaPlusCircle />
                     </Button>
                 </div>

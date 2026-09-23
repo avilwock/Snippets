@@ -2,8 +2,8 @@ import styles from "./Header.module.css"
 
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
-import { FaHome } from "react-icons/fa";
-import { FiMenu, FiX } from "react-icons/fi";
+import { FaHome, FaBars, FaTimes } from "react-icons/fa";
+// import { FiX } from "react-icons/fi";
 import NavMenu from "../NavMenu/NavMenu";
 
 function Header() {
@@ -20,7 +20,7 @@ function Header() {
                 aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-                {isMenuOpen ? <FiX /> : <FiMenu />}
+                {isMenuOpen ? < FaTimes /> : <FaBars />}
             </button>
 
             {isMenuOpen && (

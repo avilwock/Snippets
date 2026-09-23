@@ -27,53 +27,54 @@ function Dashboard() {
     return (
         <div>
             <h1>Dashboard</h1>
-
-            <div>
-                <Button className={styles.addButton} onClick={() => navigate('/new-project')}>
-                    +
-                </Button>
-                <Button onClick={() => navigate('/projects')}>
-                    Projects
-                </Button>
-            </div>
-
-            <div>
-                <Button className={styles.addButton} onClick={() => navigate('/new-snip')}>
-                    +
-                </Button>
-                <Button onClick={() => navigate('/snips')}>
-                    Snippets
-                </Button>
-            </div>
-
-            <div>
-                <Button className={styles.addButton} onClick={() => navigate('/new-task')}>
-                    +
-                </Button>
-                <Button onClick={() => navigate('/tasks')}>
-                    Tasks
-                </Button>
-            </div>
-
-            <div className={styles.priorityBorder}>
-                <h2>Priority Projects</h2>
-                <div className = {styles.buttonSort}>
-                {priorityProjects.map(project => (
-                    <Button
-                        key={project._id}
-                        onClick={() => navigate(`/project/${project._id}`)}
-                    >
-                        <FaStar color ={ project.color } />
-                        <span>{project.project_name}</span>
+            <div  className= {styles.dashContainer}>
+                <div> 
+                    <Button className={styles.addButton} onClick={() => navigate('/new-project')}>
+                        +
                     </Button>
-                ))}
+                    <Button onClick={() => navigate('/projects')}>
+                        Projects
+                    </Button>
                 </div>
-            </div>
 
-            <div>
-                <Button onClick={() => navigate('/series')}>
-                    Series
-                </Button>
+                <div>
+                    <Button className={styles.addButton} onClick={() => navigate('/new-snip')}>
+                        +
+                    </Button>
+                    <Button onClick={() => navigate('/snips')}>
+                        Snippets
+                    </Button>
+                </div>
+
+                <div>
+                    <Button className={styles.addButton} onClick={() => navigate('/new-task')}>
+                        +
+                    </Button>
+                    <Button onClick={() => navigate('/tasks')}>
+                        Tasks
+                    </Button>
+                </div>
+
+                <div className={styles.priorityBorder}>
+                    <h2>Priority Projects</h2>
+                    <div className = {styles.buttonSort}>
+                    {priorityProjects.map(project => (
+                        <Button
+                            key={project._id}
+                            onClick={() => navigate(`/project/${project._id}`)}
+                        >
+                            <FaStar color ={ project.color } />
+                            <span>{project.project_name}</span>
+                        </Button>
+                    ))}
+                    </div>
+                </div>
+
+                <div>
+                    <Button onClick={() => navigate('/series')}>
+                        Series
+                    </Button>
+                </div>
             </div>
         </div>
     )

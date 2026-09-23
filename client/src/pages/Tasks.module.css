@@ -1,0 +1,24 @@
+.topButtons {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.topButtons button {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0;
+}
+
+.taskContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.addButton {
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0;
+}
