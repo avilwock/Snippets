@@ -26,18 +26,22 @@ export const getSnip = async (req, res) => {
 
 export const getSnips = async (req, res) => {
     try {
-        const snips = await Snip.find({
+        const query = {
             user: req.user._id
-        });
+        };
+
+        if (req.query.project) {
+            query.project = req.query.project;
+        }
+
+        const snips = await Snip.find(query);
 
         res.status(200).json(snips);
-
     } catch (error) {
         console.error("Error getting snips:", error);
-
         res.status(500).json({
             message: "Failed to get snips"
-        })
+        });
     }
 }
 

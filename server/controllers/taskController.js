@@ -5,7 +5,7 @@ export const getTask = async (req, res) => {
         const task = await Task.findOne({
                     _id: req.params.id,
                     user: req.user._id
-                });
+                }).populate("project");
 
         if (!task) {
             return res.status(404).json({
@@ -26,18 +26,26 @@ export const getTask = async (req, res) => {
 
 export const getTasks = async (req, res) => {
     try {
-        const tasks = await Task.find({
+        const query = {
             user: req.user._id
-        });
+        };
+
+        if (req.query.project) {
+            query.project = req.query.project;
+        }
+
+        console.log("TASK QUERY:", query);
+
+        const tasks = await Task.find(query);
+
+        console.log("FOUND TASKS:", tasks);
 
         res.status(200).json(tasks);
-
     } catch (error) {
         console.error("Error getting tasks:", error);
-
         res.status(500).json({
             message: "Failed to get tasks"
-        })
+        });
     }
 }
 
@@ -70,7 +78,7 @@ export const editTask = async(req, res) => {
             },
             { $set:req.body },
             { returnDocument: "after" }
-        );
+        ).populate("project");
 
         if (!updatedTask) {
             return res.status(404).json({

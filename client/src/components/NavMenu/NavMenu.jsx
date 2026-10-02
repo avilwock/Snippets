@@ -6,6 +6,14 @@ import { FaUser, FaTimes, FaSearch } from "react-icons/fa"
 function NavMenu({onClose}) {
     const navigate = useNavigate();
 
+    const token= localStorage.getItem("token");
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        onClose();
+        navigate("/Login");
+    };
+
     return (
         <>
             <div
@@ -68,6 +76,12 @@ function NavMenu({onClose}) {
                             navigate('/profile')}}>
                         <FaUser />
                     </button>
+                    {token && ( 
+                        <button 
+                            className={styles.button} 
+                            onClick={handleLogout}> 
+                                Logout 
+                        </button> )}
                 </div>
             </nav>
         </>

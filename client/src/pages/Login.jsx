@@ -15,7 +15,7 @@ function Login() {
         e.preventDefault();
         
         try {
-            const response = await api.post("/user/login", {
+            const response = await api.post("/user/Login", {
                 email,
                 password
             });
@@ -63,6 +63,7 @@ function Login() {
                 onClick={() => navigate('/signup')}>
                     Sign Up
                 </Button>
+                
             </div>
         </form>
     </div>

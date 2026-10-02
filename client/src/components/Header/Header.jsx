@@ -5,6 +5,7 @@ import { useState } from "react"
 import { FaHome, FaBars, FaTimes } from "react-icons/fa";
 // import { FiX } from "react-icons/fi";
 import NavMenu from "../NavMenu/NavMenu";
+// import Button from "../../components/Button/Button"
 
 function Header() {
 
@@ -31,6 +32,7 @@ function Header() {
             <button className={styles.dashbutton} onClick={() => navigate('/dashboard')}>
                 <FaHome />
             </button>
+            
                 
                 
         </header>

@@ -8,21 +8,59 @@ function Task() {
 
     const { id } = useParams();
     const [task, setTask] = useState(null);
+    const [projects, setProjects] = useState([])
     const navigate = useNavigate();
 
     useEffect(() => {
+        const token = localStorage.getItem("token");
         fetch(`/api/task/${id}`, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem("token")}`
+                Authorization: `Bearer ${token}`
             }
         })
             .then((response) => response.json())
             .then((data) => setTask(data))
             .catch((error) => console.error(error));
+
+        fetch("/api/project", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(response=> response.json())
+            .then(data => setProjects(data))
+            .catch(error => console.error(error));
     }, [id]);
 
     if (!task) {
         return <p>Loading...</p>;
+    }
+
+    const handleProjectChange = async (event) => {
+        const projectId = event.target.value;
+
+        try {
+            const response = await fetch(`/api/task/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify({
+                    project: projectId || null
+                })
+            });
+
+            const data = await response.json();
+
+            if(!response.ok) {
+                throw new Error(data.message || "Failed to update project");
+            }
+
+            setTask(data);
+        } catch (error) {
+            console.error("Error updating project:", error)
+        }
     }
 
     const handleDelete = async () => {
@@ -72,6 +110,21 @@ function Task() {
             <h1>{task.content}</h1>
             <p>{new Date(task.due_date).toLocaleDateString()}</p>
             <p>{task.type}</p>
+            <label>
+            Project:
+                <select
+                    value={task.project?._id || ""}
+                    onChange={handleProjectChange}
+                >
+                    <option value="">No Project</option>
+
+                    {projects.map((project) => (
+                        <option key={project._id} value={project._id}>
+                            {project.project_name}
+                        </option>
+                    ))}
+                </select>
+            </label>
         </div>
     );
 }
