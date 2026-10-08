@@ -1,9 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import {useEffect, useState} from "react"
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
-import Header from "./components/Header/Header";
 import NewProject from "./pages/NewProject";
 import NewSnip from "./pages/NewSnip";
 import NewTask from "./pages/NewTask";
@@ -28,25 +26,20 @@ import EditTask from "./pages/EditTask"
 import HomeRedirect from "./components/HomeRedirect"
 
 function App() {
-
   // const [showSplash, setShowSplash] = useState(true);
-
   // useEffect(() => {
   //   const timer = setTimeout(() => {
   //     setShowSplash(false);
   //   }, 2000);
-
   //   return () => clearTimeout(timer);
   // }, [])
-
   // if (showSplash) {
   //   return <SplashScreen />
   // }
   return (
     <BrowserRouter>
-    <Header></Header>
       <Routes>
-        <Route path="/" element ={<HomeRedirect />} />
+        <Route path="/" element={<HomeRedirect />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route element={<ProtectedRoute />}>
@@ -57,19 +50,19 @@ function App() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/snips" element={<Snips />} />
           <Route path="/tasks" element={<Tasks />} />
-          <Route path ="/settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/project/:id" element={<Project />} />
-          <Route path="/task/:id" element ={<Task />} />
+          <Route path="/task/:id" element={<Task />} />
           <Route path="/snip/:id" element={<Snip />} />
-          <Route path="/search" element ={<Search />} />
-          <Route path="/profile" element ={<Profile />} />
-          <Route path="/series" element ={<SeriesList />} />
-          <Route path="/project/:id/edit" element ={<EditProject />} />
-          <Route path="/new-series" element = {<NewSeries />} />
-          <Route path="/series/:id" element ={<Series />} />
-          <Route path="/series/:id/edit" element = {<EditSeries />} />
-          <Route path="/snip/:id/edit" element ={<EditSnip />} />
-          <Route path="/task/:id/edit" element ={<EditTask />} />
+          <Route path="/search" element={<Search />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/series" element={<SeriesList />} />
+          <Route path="/project/:id/edit" element={<EditProject />} />
+          <Route path="/new-series" element={<NewSeries />} />
+          <Route path="/series/:id" element={<Series />} />
+          <Route path="/series/:id/edit" element={<EditSeries />} />
+          <Route path="/snip/:id/edit" element={<EditSnip />} />
+          <Route path="/task/:id/edit" element={<EditTask />} />
         </Route>
       </Routes>
     </BrowserRouter>

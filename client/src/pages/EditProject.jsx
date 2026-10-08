@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa"
+import styles from "../pages/EditProject.module.css"
 
 import Button from "../components/Button/Button"
 
@@ -90,6 +91,7 @@ function EditProject() {
 
   return (
     <div>
+        <div className={styles.editProject}>
         <button onClick={() =>
                 navigate(-1)}>
             <FaArrowLeft/>
@@ -97,6 +99,7 @@ function EditProject() {
         <h1>Edit Project</h1>
 
         <form onSubmit={handleSubmit}>
+            <div  className={styles.entry}> 
             <label>
                 Project Name
                 <input
@@ -105,27 +108,28 @@ function EditProject() {
                     onChange = {(e) => setProjectName(e.target.value)}
                     required
                 />
+                <input
+                    className={styles.color}
+                    type="color"
+                    value={color}
+                    onChange={(e) => setColor(e.target.value)}
+                />
             </label>
             <label>
                 Description
-                <textarea
+                <textarea className={styles.description}
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
                 />
             </label>
-            <label>
-                    Color
-                    <input
-                        type="color"
-                        value={color}
-                        onChange={(e) => setColor(e.target.value)}
-                    />
-                </label>
+            
+            
+            </div>
 
-                <label>
-                    Genre
-                </label>
-
+            <h2>
+              Genre
+            </h2>
+            <div className={styles.genre}>
                 <label>
                     <input
                         type="checkbox"
@@ -215,11 +219,13 @@ function EditProject() {
                     />
                     Comedy
                 </label>
-
-                <Button type="submit">
+                </div>
+                <Button className={styles.save}
+                type="submit">
                     Save Changes
                 </Button>
         </form>
+        </div>
     </div>
   )
 }

@@ -1,0 +1,74 @@
+.entry {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.entry label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.entry input[type="text"],
+.description {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.description {
+    height: 6rem;
+    resize: vertical;
+}
+
+.color {
+    width: 3rem;
+    height: 2rem;
+}
+
+.genre {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+.genre label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 6rem;
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.genre input {
+    display: none;
+}
+
+.editProject {
+    max-width: 32rem;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+.editProject h1 {
+    text-align: center;
+}
+
+.editProject h2 {
+    width: 20rem;
+    margin: 1.5rem auto 0.75rem;
+}
+
+.save {
+    height: 3rem;
+}
