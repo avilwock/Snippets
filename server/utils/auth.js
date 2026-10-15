@@ -1,14 +1,12 @@
 import jwt from 'jsonwebtoken';
 
 export const authMiddleware = (req, res, next) => {
-  const body = req.body || {};
-  
   const authHeader = req.headers.authorization;
-  console.log("AUTH HEADER:", authHeader);
 
-if (!authHeader) {
-  return next();
-}
+  // No token: allow public routes to continue
+  if (!authHeader) {
+    return next();
+  }
 
 const token = authHeader.startsWith('Bearer ')
   ? authHeader.split(' ')[1]

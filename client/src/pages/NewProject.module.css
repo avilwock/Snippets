@@ -1,0 +1,121 @@
+.projectbox {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.entry {
+    width: 100%;
+    max-width: 650px;
+    min-width: 0;
+}
+
+.entry form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Project name, color, and description */
+.entry form > label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.entry input[type="text"] {
+    width: 70%;
+    max-width: 350px;
+    box-sizing: border-box;
+    padding: 8px;
+    align-self: center;
+}
+
+/* Description */
+.entry textarea {
+    display: block;
+    width: 100%;
+    min-height: 140px;
+    padding: 10px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+/* Small color picker */
+.entry input[type="color"] {
+    width: 50px;
+    height: 35px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+/* Genre section */
+.genreSection {
+    border: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.genreSection legend {
+    padding: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+}
+
+.genreGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.genreOption {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    width: auto;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: white;
+    color: #333;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.genreOption input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    pointer-events: none;
+}
+
+.genreOption:has(input:checked) {
+    background: #333;
+    border-color: #333;
+    color: white;
+}
+
+.genreOption:hover {
+    border-color: #666;
+}
+
+.button {
+    margin-top: 20px !important;
+    display: flex;
+    justify-self: center;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    padding: 0;
+}

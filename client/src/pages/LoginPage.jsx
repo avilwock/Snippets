@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../api/api";
 import Button from "../components/Button/Button"
-import styles from "../pages/Login.module.css"
+import styles from "../pages/LoginPage.module.css"
 import { FaLightbulb } from "react-icons/fa"
 
 
