@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from "../components/Button/Button";
 import { FaArrowLeft } from "react-icons/fa"
+import styles from "./NewSnip.module.css"
 
 function NewSnip() {
     const [content, setContent] = useState('');
@@ -68,23 +69,28 @@ function NewSnip() {
     };
 
     return (
-        <div>
-            <h1>New Snip</h1>
-            <Button onClick={() =>
-                navigate(-1)}>
-            <FaArrowLeft/>
-            </Button>
+    <div>
+        <h1>New Snip</h1>
 
+        <Button
+            className={styles.button}
+            onClick={() => navigate(-1)}
+        >
+            <FaArrowLeft />
+        </Button>
+
+        <div className={styles.snipbox}>
             <form onSubmit={handleSubmit}>
-                <label>
+                <label className={styles.field}>
                     Content
                     <textarea
                         value={content}
                         onChange={(e) => setContent(e.target.value)}
+                        required
                     />
                 </label>
 
-                <label>
+                <label className={styles.field}>
                     Type
                     <select
                         value={type}
@@ -100,7 +106,8 @@ function NewSnip() {
                         <option value="Misc">Misc</option>
                     </select>
                 </label>
-                <label>
+
+                <label className={styles.field}>
                     Project
                     <select
                         value={project}
@@ -116,11 +123,11 @@ function NewSnip() {
                     </select>
                 </label>
 
-                <label>
+                <label className={styles.field}>
                     Notes
                     <textarea
-                    value={notes}
-                    onChange={(e) => setNotes(e.target.value)}
+                        value={notes}
+                        onChange={(e) => setNotes(e.target.value)}
                     />
                 </label>
 
@@ -129,7 +136,8 @@ function NewSnip() {
                 </Button>
             </form>
         </div>
-    );
+    </div>
+);
 }
 
 export default NewSnip;

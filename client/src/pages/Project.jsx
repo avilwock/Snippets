@@ -28,7 +28,7 @@ function Project() {
             .then((data) => setProject(data))
             .catch((error) => console.error(error));
 
-            fetch(`/api/snips?project=${id}`, {
+            fetch(`/api/snip?project=${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
@@ -124,7 +124,12 @@ function Project() {
 
             <div className={styles.itemBoxes}>
                 {snips.map((snip) => (
-                    <div className={styles.itemBox} key={snip._id}>
+                    <div
+                        className={styles.itemBox}
+                        key={snip._id}
+                        onClick={() => navigate(`/snip/${snip._id}`)}
+                        style={{ cursor: "pointer" }}
+                        >
                         <p>{snip.content}</p>
                     </div>
                 ))}
